@@ -2,7 +2,7 @@ dep "default-jre.managed" do
   provides ["java"]
 end
 
-dep "java-virtual-machine.managed" do
+dep "gcj-jre-headless.managed" do
   requires 'default-jre.managed'
-  provides ["java-virtual-machine"]
+  provides ["gcj-jre-headless"]
 end
