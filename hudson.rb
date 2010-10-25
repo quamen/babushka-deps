@@ -1,6 +1,6 @@
 dep 'hudson' do
 
-  requires 'daemon.managed'
+  requires 'default-jre.managed', 'daemon.managed'
 
   met? do
     result = shell('dpkg -s hudson')
