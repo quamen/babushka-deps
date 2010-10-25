@@ -1,6 +1,6 @@
 dep 'hudson' do
 
-  requires 'java'
+  requires 'default-jre.managed'
 
   met? do
     result = shell('dpkg -s hudson')
