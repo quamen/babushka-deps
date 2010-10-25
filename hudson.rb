@@ -1,6 +1,6 @@
 dep 'hudson' do
 
-  requires 'default-jre.managed'
+  requires 'java-virtual-machine.managed', 'daemon.managed'
 
   met? do
     result = shell('dpkg -s hudson')
