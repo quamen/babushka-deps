@@ -1,6 +1,6 @@
 dep 'hudson' do
 
-  requires 'gcj-jre-headless.managed', 'daemon.managed'
+  requires 'gcj-jdk.managed', 'daemon.managed'
 
   met? do
     result = shell('dpkg -s hudson')

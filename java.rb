@@ -2,7 +2,7 @@ dep "default-jre.managed" do
   provides ["java"]
 end
 
-dep "gcj-jre-headless.managed" do
+dep "gcj-jdk.managed" do
   requires 'default-jre.managed'
-  provides ["gcj-jre-headless"]
+  provides ["gcj-jdk"]
 end
