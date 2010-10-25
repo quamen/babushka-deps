@@ -3,6 +3,6 @@ dep "default-jre.managed" do
 end
 
 dep "java-virtual-machine.managed" do
-  require 'java'
+  requires 'java'
   provides ["java-virtual-machine"]
 end
