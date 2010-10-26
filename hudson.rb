@@ -19,8 +19,8 @@ end
 dep 'hudson plugins for rails' do
   requires 'hudson', 'hudson git plugin', 'hudson github plugin', 'hudson ruby plugin', 'hudson rake plugin'
   after do
-    shell('/etc/init.d/hudson stop')
-    shell('/etc/init.d/hudson start')
+    sudo('/etc/init.d/hudson stop')
+    sudo('/etc/init.d/hudson start')
   end
 end
 
