@@ -27,7 +27,9 @@ dep 'hudson cli' do
   end
   
   meet do
-    sudo('wget -O /usr/share/hudson/hudson-cli.jar http://localhost:8080/jnlpJars/hudson-cli.jar')
+    in_dir('/usr/share/hudson') do
+      sudo('jar -xf hudson.war WEB-INF/hudson-cli.jar && mv WEB-INF/hudson-cli.jar . && rmdir WEB-INF')
+    end
   end
 end
 
