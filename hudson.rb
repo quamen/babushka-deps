@@ -28,7 +28,9 @@ dep 'hudson cli' do
   
   meet do
     in_dir('/usr/share/hudson') do
-      sudo('jar -xf hudson.war WEB-INF/hudson-cli.jar && mv WEB-INF/hudson-cli.jar . && rmdir WEB-INF')
+      sudo('jar -xf hudson.war WEB-INF/hudson-cli.jar')
+      sudo('mv WEB-INF/hudson-cli.jar .')
+      sudo('rmdir WEB-INF')
     end
   end
 end
