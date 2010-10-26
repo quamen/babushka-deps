@@ -39,7 +39,7 @@ dep 'hudson git plugin' do
   
   meet do
     in_dir('/usr/share/hudson') do
-      shell('java -jar hudson-cli.jar -s http://localhost:8080/ install-plugin git')
+      shell('java -jar hudson-cli.jar -s http://localhost:8080/ install-plugin http://hudson-ci.org/latest/git.hpi')
     end
   end
 end
@@ -51,7 +51,7 @@ dep 'hudson github plugin' do
   
   meet do
     in_dir('/usr/share/hudson') do
-      shell('java -jar hudson-cli.jar -s http://localhost:8080/ install-plugin github')
+      shell('java -jar hudson-cli.jar -s http://localhost:8080/ install-plugin http://hudson-ci.org/latest/github.hpi')
     end
   end
 end
@@ -63,7 +63,7 @@ dep 'hudson ruby plugin' do
   
   meet do
     in_dir('/usr/share/hudson') do
-      shell('java -jar hudson-cli.jar -s http://localhost:8080/ install-plugin ruby')
+      shell('java -jar hudson-cli.jar -s http://localhost:8080/ install-plugin http://hudson-ci.org/latest/ruby.hpi')
     end
   end
 end
@@ -75,7 +75,7 @@ dep 'hudson rake plugin' do
   
   meet do
     in_dir('/usr/share/hudson') do
-      shell('java -jar hudson-cli.jar -s http://localhost:8080/ install-plugin rake')
+      shell('java -jar hudson-cli.jar -s http://localhost:8080/ install-plugin http://hudson-ci.org/latest/rake.hpi')
     end
   end
 end
