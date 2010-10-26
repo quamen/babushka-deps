@@ -38,11 +38,8 @@ dep 'hudson cli' do
     in_dir('/usr/share/hudson') do
       30.times do
         response = shell('java -jar hudson-cli.jar -s http://localhost:8080/ version')
-        if response.include?("java.io.IOException")
-          sleep 1
-        else
-          break
-        end
+        break if response && response =~ /^\d+(\.\d+)*$/
+        sleep 1
       end
     end
   end
