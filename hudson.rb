@@ -28,7 +28,7 @@ dep 'hudson cli' do
   end
   
   meet do
-    shell('wget -O /usr/share/hudson/hudson-cli.jar http://localhost:8080/jnlpJars/hudson-cli.jar')
+    sudo('wget -O /usr/share/hudson/hudson-cli.jar http://localhost:8080/jnlpJars/hudson-cli.jar')
   end
 end
 
