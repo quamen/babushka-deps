@@ -34,7 +34,7 @@ end
 
 dep 'hudson git plugin' do
   met? do
-    "/var/lib/hudson/plugins/git".p.exists?
+    "/var/lib/hudson/plugins/git.hpi".p.exists?
   end
   
   meet do
@@ -47,7 +47,7 @@ end
 
 dep 'hudson github plugin' do
   met? do
-    "/var/lib/hudson/plugins/github".p.exists?
+    "/var/lib/hudson/plugins/github.hpi".p.exists?
   end
   
   meet do
@@ -60,7 +60,7 @@ end
 
 dep 'hudson ruby plugin' do
   met? do
-    "/var/lib/hudson/plugins/ruby".p.exists?
+    "/var/lib/hudson/plugins/ruby.hpi".p.exists?
   end
   
   meet do
@@ -73,7 +73,7 @@ end
 
 dep 'hudson rake plugin' do
   met? do
-    "/var/lib/hudson/plugins/rake".p.exists?
+    "/var/lib/hudson/plugins/rake.hpi".p.exists?
   end
   
   meet do
