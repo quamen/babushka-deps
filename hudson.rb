@@ -15,3 +15,59 @@ dep 'hudson' do
   end
 
 end
+
+dep 'hudson plugins for rails' do
+  requires 'hudson', 'hudson git plugin', 'hudson github plugin', 'hudson ruby plugin', 'hudson rake plugin'
+  after do
+    shell('/etc/init.d/hudson stop')
+    shell('/etc/init.d/hudson start')
+  end
+end
+
+dep 'hudson git plugin' do
+  met? do
+    "/var/lib/hudson/plugins/git.hpi".p.exists?
+  end
+  
+  meet do
+    in_dir('/var/lib/hudson/plugins') do
+      shell('wget http://hudson-ci.org/latest/git.hpi')
+    end
+  end
+end
+
+dep 'hudson github plugin' do
+  met? do
+    "/var/lib/hudson/plugins/github.hpi".p.exists?
+  end
+  
+  meet do
+    in_dir('/var/lib/hudson/plugins') do
+      shell('wget http://hudson-ci.org/latest/github.hpi')
+    end
+  end
+end
+
+dep 'hudson ruby plugin' do
+  met? do
+    "/var/lib/hudson/plugins/ruby.hpi".p.exists?
+  end
+  
+  meet do
+    in_dir('/var/lib/hudson/plugins') do
+      shell('wget http://hudson-ci.org/latest/ruby.hpi')
+    end
+  end
+end
+
+dep 'hudson rake plugin' do
+  met? do
+    "/var/lib/hudson/plugins/rake.hpi".p.exists?
+  end
+  
+  meet do
+    in_dir('/var/lib/hudson/plugins') do
+      shell('wget http://hudson-ci.org/latest/rake.hpi')
+    end
+  end
+end
