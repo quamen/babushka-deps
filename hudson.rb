@@ -33,6 +33,17 @@ dep 'hudson cli' do
       sudo('rmdir WEB-INF')
     end
   end
+  
+  after do
+    30.times do
+      response = shell('java -jar hudson-cli.jar -s http://localhost:8080/ version')
+      if response.include?("java.io.IOException")
+        sleep 1
+      else
+        break
+      end
+    end
+  end
 end
 
 dep 'hudson git plugin' do
