@@ -17,8 +17,7 @@ end
 dep 'hudson plugins for rails' do
   requires 'hudson', 'hudson cli', 'hudson git plugin', 'hudson github plugin', 'hudson ruby plugin', 'hudson rake plugin'
   after do
-    sudo('/etc/init.d/hudson stop')
-    sudo('/etc/init.d/hudson start')
+    shell('java -jar hudson-cli.jar -s http://localhost:8080/ restart')
   end
 end
 
