@@ -1,5 +1,4 @@
 dep 'hudson' do
-
   requires 'gcj-jdk.managed', 'daemon.managed'
 
   met? do
@@ -13,7 +12,11 @@ dep 'hudson' do
     shell('wget -O /tmp/hudson.dep http://hudson-ci.org/latest/debian/hudson.deb')
     sudo('dpkg --install /tmp/hudson.dep')
   end
-
+  
+  after do
+    sudo('/etc/init.d/hudson stop')
+    sudo('/etc/init.d/hudson start')
+  end
 end
 
 dep 'hudson plugins for rails' do
