@@ -17,7 +17,12 @@ end
 dep 'hudson plugins for rails' do
   requires 'hudson', 'hudson cli', 'hudson git plugin', 'hudson github plugin', 'hudson ruby plugin', 'hudson rake plugin'
   after do
-    shell('java -jar hudson-cli.jar -s http://localhost:8080/ restart')
+    sudo('/etc/init.d/hudson stop')
+    30.times do
+      response = sudo('/etc/init.d/hudson start')
+      break if response && !response.include?("The selected http port (8080) seems to be in use by another program")
+      sleep 1
+    end
   end
 end
 
