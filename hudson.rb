@@ -11,62 +11,71 @@ dep 'hudson' do
     sudo('apt-key add /tmp/hudson-apt-key')
     shell('wget -O /tmp/hudson.dep http://hudson-ci.org/latest/debian/hudson.deb')
     sudo('dpkg --install /tmp/hudson.dep')
-    shell('mkdir -p /var/lib/hudson/plugins')
   end
 end
 
 dep 'hudson plugins for rails' do
-  requires 'hudson', 'hudson git plugin', 'hudson github plugin', 'hudson ruby plugin', 'hudson rake plugin'
+  requires 'hudson', 'hudson cli', 'hudson git plugin', 'hudson github plugin', 'hudson ruby plugin', 'hudson rake plugin'
   after do
     sudo('/etc/init.d/hudson stop')
     sudo('/etc/init.d/hudson start')
   end
 end
 
-dep 'hudson git plugin' do
+dep 'hudson cli' do
   met? do
-    "/var/lib/hudson/plugins/git.hpi".p.exists?
+    "/usr/share/hudson/hudson-cli.jar".p.exists?
   end
   
   meet do
-    in_dir('/var/lib/hudson/plugins') do
-      shell('wget http://hudson-ci.org/latest/git.hpi')
+    shell('wget -O /usr/share/hudson/hudson-cli.jar http://localhost:8080/jnlpJars/hudson-cli.jar')
+  end
+end
+
+dep 'hudson git plugin' do
+  met? do
+    "/var/lib/hudson/plugins/git".p.exists?
+  end
+  
+  meet do
+    in_dir('/usr/share/hudson') do
+      shell('java -jar hudson-cli.jar -s http://localhost:8080/ install-plugin http://hudson-ci.org/latest/git.hpi')
     end
   end
 end
 
 dep 'hudson github plugin' do
   met? do
-    "/var/lib/hudson/plugins/github.hpi".p.exists?
+    "/var/lib/hudson/plugins/github".p.exists?
   end
   
   meet do
-    in_dir('/var/lib/hudson/plugins') do
-      shell('wget http://hudson-ci.org/latest/github.hpi')
+    in_dir('/usr/share/hudson') do
+      shell('java -jar hudson-cli.jar -s http://localhost:8080/ install-plugin http://hudson-ci.org/latest/github.hpi')
     end
   end
 end
 
 dep 'hudson ruby plugin' do
   met? do
-    "/var/lib/hudson/plugins/ruby.hpi".p.exists?
+    "/var/lib/hudson/plugins/ruby".p.exists?
   end
   
   meet do
-    in_dir('/var/lib/hudson/plugins') do
-      shell('wget http://hudson-ci.org/latest/ruby.hpi')
+    in_dir('/usr/share/hudson') do
+      shell('java -jar hudson-cli.jar -s http://localhost:8080/ install-plugin http://hudson-ci.org/latest/ruby.hpi')
     end
   end
 end
 
 dep 'hudson rake plugin' do
   met? do
-    "/var/lib/hudson/plugins/rake.hpi".p.exists?
+    "/var/lib/hudson/plugins/rake".p.exists?
   end
   
   meet do
-    in_dir('/var/lib/hudson/plugins') do
-      shell('wget http://hudson-ci.org/latest/rake.hpi')
+    in_dir('/usr/share/hudson') do
+      shell('java -jar hudson-cli.jar -s http://localhost:8080/ install-plugin http://hudson-ci.org/latest/rake.hpi')
     end
   end
 end
