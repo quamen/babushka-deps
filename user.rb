@@ -22,6 +22,23 @@ dep 'user exists with password' do
   end
 end
 
+dep 'user exists with global git config' do
+  requires 'user exists with password'
+  on :linux do
+    met? do
+      email = shell("git config --global user.email")
+      name = shell("git config --global user.name")
+      
+      (email == "#{var(:email)}") && (name == "#{var(:name)}")
+    end
+    
+    meet do
+      shell("git config --global user.email #{var(:email)}")
+      shell("git config --global user.name #{var(:name)}")
+    end
+  end
+end
+
 dep 'user exists' do
   setup {
     define_var :home_dir_base, :default => L{
