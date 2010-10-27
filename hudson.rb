@@ -15,13 +15,29 @@ dep 'hudson' do
 end
 
 dep 'hudson plugins for rails' do
-  requires 'hudson', 'hudson cli', 'hudson git plugin', 'hudson github plugin', 'hudson ruby plugin', 'hudson rake plugin'
-  after do
+  requires 'hudson', 'hudson cli', 'hudson git plugin', 'hudson github plugin', 'hudson ruby plugin', 'hudson rake plugin', 'hudson has been restarted'
+end
+
+dep 'hudson has been restarted' do
+  met? do
+    if "/tmp/hudson.kick".p.exists?
+      shell('rm /tmp/hudson.kick')
+      true
+    else
+      false
+    end
+  end
+  
+  meet do
     sudo('/etc/init.d/hudson stop')
     30.times do
       response = sudo('/etc/init.d/hudson start')
-      break if response && !response.include?("The selected http port (8080) seems to be in use by another program")
-      sleep 1
+      if response && !response.include?("The selected http port (8080) seems to be in use by another program")
+        shell('touch /tmp/hudson.kick')
+        break
+      else
+        sleep 1
+      end
     end
   end
 end
