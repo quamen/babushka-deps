@@ -23,7 +23,6 @@ dep 'user exists with password' do
 end
 
 dep 'user exists with global git config' do
-  requires 'user exists with password'
   on :linux do
     met? do
       email = shell("git config --global user.email")
