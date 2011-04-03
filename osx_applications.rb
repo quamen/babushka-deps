@@ -21,3 +21,7 @@ end
 dep 'SizeUp.app' do
   source 'http://irradiatedsoftware.com/download/SizeUp.zip'
 end
+
+dep 'TextMate.app' do
+  source 'http://download.macromates.com/TextMate_1.5.10.zip'
+end
