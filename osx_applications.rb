@@ -15,7 +15,7 @@ dep 'Google Chrome.app' do
 end
 
 dep 'LaunchBar.app' do
-  source 'http://www.obdev.at/downloads/launchbar/LaunchBar-5.0.3.dmg'
+  source 'http://www.obdev.at/downloads/launchbar/LaunchBar-5.0.4.dmg'
 end
 
 dep 'SizeUp.app' do
