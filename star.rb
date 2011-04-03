@@ -1,4 +1,4 @@
-dep '*' do
+dep 'star' do
   requires 'osx essential applications',
            'development tools',
            'rvm with rubies'
@@ -22,8 +22,8 @@ end
 
 dep 'zsh' do
   requires 'zsh.managed'
-  met? { sudo('echo \$SHELL', :as => var(:username), :su => true) == which('zsh') }
-  meet { sudo("chsh -s '#{which('zsh')}' #{var(:username)}") }
+  met? { sudo('echo \$SHELL', :as => var(:username), :su => true) == '/bin/zsh' }
+  meet { sudo("chsh -s '/bin/zsh' #{var(:username)}") }
 end
 
 dep 'oh-my-zsh' do

@@ -4,7 +4,7 @@ I bought a new computer, I'm going to build it entirely with babushka, and then 
 
 If you want to replicate my setup:
 
-    babushka quamen:*
+    babushka quamen:star
 
 ## Some useful Babushka Deps you might want to try out
 
