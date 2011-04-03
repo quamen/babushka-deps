@@ -31,7 +31,7 @@ end
 dep 'dot-files' do
   requires 'git'
   
-  met? { ".ackrc".p.exists? }
+  met? { "~/Code/github/quamen/dot-files".p.exists? }
   meet {
     shell('mkdir -p ~/Code/github/quamen')
     in_dir('~/Code/github/quamen') do
