@@ -4,6 +4,7 @@ end
 
 dep 'osx essential applications' do
   requires '1Password.app',
+           'Caffeine.app',
            'Dropbox.app',
            'Google Chrome.app',
            'LaunchBar.app',
