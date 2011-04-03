@@ -1,5 +1,7 @@
 dep '*' do
-  requires 'osx essential applications'
+  requires 'osx essential applications',
+           'development tools',
+           'rvm with rubies'
 end
 
 dep 'osx essential applications' do
@@ -9,4 +11,9 @@ dep 'osx essential applications' do
            'Google Chrome.app',
            'LaunchBar.app',
            'SizeUp.app'
+end
+
+dep 'development tools' do
+  requires 'TextMate.app',
+           'homebrew'
 end
