@@ -6,7 +6,7 @@ dep 'Dropbox.app' do
   source 'http://cdn.dropbox.com/Dropbox%201.0.10.dmg'
 end
 
-dep 'Caffeine' do
+dep 'Caffeine.app' do
   source 'http://download.lightheadsw.com/download.php?software=caffeine'
 end
 
