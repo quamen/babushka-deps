@@ -14,12 +14,14 @@ dep 'osx essential applications' do
 end
 
 dep 'development tools' do
-  requires 'TextMate.app',
+  requires 'public keys',
+           'github',
+           'TextMate.app',
            'homebrew',
            'oh-my-zsh',
-           'dot-files',
-           'github',
-           'public keys'
+           'dot-files'
+           
+           
 end
 
 dep 'zsh' do
@@ -42,7 +44,7 @@ dep 'dot-files' do
   met? { "~/Code/github/quamen/dot-files".p.exists? }
   meet {
     login_shell('mkdir -p ~/Code/github/quamen') unless ' ~/Code/github/quamen'.p.exists?
-    git 'https://github.com/quamen/dot-files.git', :to => '~/Code/github/quamen/dot-files'
+    git 'git@github.com:quamen/dot-files.git', :to => '~/Code/github/quamen/dot-files'
     in_dir('~/Code/github/quamen/dot-files') do
       shell('./clone_and_link.sh')
     end
