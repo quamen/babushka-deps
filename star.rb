@@ -18,7 +18,8 @@ dep 'development tools' do
            'homebrew',
            'oh-my-zsh',
            'dot-files',
-           'github'
+           'github',
+           'public keys'
 end
 
 dep 'zsh' do
@@ -45,5 +46,12 @@ dep 'dot-files' do
     in_dir('~/Code/github/quamen/dot-files') do
       shell('./clone_and_link.sh')
     end
+  }
+end
+
+dep 'public keys' do
+  met? { "~/.ssh/id_rsa.pub".p.exists? }
+  meet {
+    shell("echo '\n' | ssh-keygen -t rsa -C '#{var(:email)}' -N '#{var(:phrase)}'")
   }
 end
