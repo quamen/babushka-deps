@@ -17,7 +17,8 @@ dep 'development tools' do
   requires 'TextMate.app',
            'homebrew',
            'oh-my-zsh',
-           'dot-files'
+           'dot-files',
+           'github'
 end
 
 dep 'zsh' do
