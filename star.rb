@@ -1,7 +1,8 @@
 dep 'star' do
   requires 'osx essential applications',
            'development tools',
-           'rvm with rubies'
+           'rvm with rubies',
+           'babushka-deps'
 end
 
 dep 'osx essential applications' do
@@ -20,22 +21,16 @@ dep 'development tools' do
            'homebrew',
            'oh-my-zsh',
            'dot-files'
-           
-           
 end
 
-dep 'zsh' do
-  requires 'zsh.managed'
-  met? { sudo('echo \$SHELL', :as => var(:username), :su => true) == '/bin/zsh' }
-  meet { sudo("chsh -s '/bin/zsh' #{var(:username)}") }
-end
-
-dep 'oh-my-zsh' do
-  requires 'wget.managed'
-  requires 'zsh'
+dep 'babushka-deps' do
+  met? {"~/Code/github/quamen/babushka-deps".p.exists? }
   
-  met? { "~/.oh-my-zsh".p.exists? }
-  meet { login_shell('wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh') }
+  meet {
+    login_shell('mkdir -p ~/Code/github/quamen') unless ' ~/Code/github/quamen'.p.exists?
+    git 'git@github.com:quamen/babushka-deps.git', :to => '~/Code/github/quamen/babushka-deps'
+    login_shell('ln -s ~/Code/github/quamen/babushka-deps ~/.babushka/deps')
+  }
 end
 
 dep 'dot-files' do
