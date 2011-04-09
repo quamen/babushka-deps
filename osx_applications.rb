@@ -25,3 +25,7 @@ end
 dep 'TextMate.app' do
   source 'http://download.macromates.com/TextMate_1.5.10.zip'
 end
+
+dep 'iTerm.app' do
+  source 'http://iterm2.googlecode.com/files/iTerm2-alpha17.zip'
+end

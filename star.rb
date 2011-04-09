@@ -20,7 +20,17 @@ dep 'development tools' do
            'TextMate.app',
            'homebrew',
            'oh-my-zsh',
-           'dot-files'
+           'dot-files',
+           'iTerm.app',
+           'solarized'
+end
+
+dep 'solarized' do
+  met? {"~/Code/github/altercation/solarized".p.exists?}
+  meet {
+    login_shell('mkdir -p ~/Code/github/quamen') unless ' ~/Code/github/quamen'.p.exists?
+    git 'git://github.com/altercation/solarized.git', :to => '~/Code/github/quamen/solarized'
+  }
 end
 
 dep 'babushka-deps' do
