@@ -24,7 +24,7 @@ dep 'development tools' do
 end
 
 dep 'babushka-deps' do
-  met? {"~/Code/github/quamen/babushka-deps".p.exists? }
+  met? {"~/.babushka/deps".p.exists? }
   
   meet {
     login_shell('mkdir -p ~/Code/github/quamen') unless ' ~/Code/github/quamen'.p.exists?
